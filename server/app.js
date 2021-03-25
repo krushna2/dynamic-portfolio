@@ -1,5 +1,15 @@
+const dotenv = require("dotenv");
+const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
+
+dotenv.config({path:'./config.env'});
+require('./db/conn');
+app.use(express.json());
+const PORT=process.env.PORT;
+
+// const User=require("./model/userSchema");
+app.use(require("./router/route"));
 
 //Midddleware
 const Midddleware=(req,res,next)=>{
@@ -25,6 +35,6 @@ app. get("/signup",(req,res)=>{
     res.send("Hello, this is signup page!")
 });
 
-app.listen(8000,()=>{
-    console.log("Server is running on port 8000.")
+app.listen(PORT,()=>{
+    console.log(`Server is running on port ${PORT}.`)
 });
