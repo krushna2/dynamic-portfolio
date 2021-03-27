@@ -4,7 +4,9 @@ const express = require("express");
 const app = express();
 
 dotenv.config({path:'./config.env'});
+//Database connection
 require('./db/conn');
+//Convert json to object
 app.use(express.json());
 const PORT=process.env.PORT;
 
